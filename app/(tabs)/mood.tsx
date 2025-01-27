@@ -48,8 +48,15 @@ const MOODS = [
 ];
 
 const ACTIVITIES = [
-  '💻 work', '🏃‍♂️ exercise', '🎮 gaming',
-  '🤝 socializing', '📚 studying', '😴 resting'
+  '💼 hustling',
+  '🛋️ chillin\'',
+  '🎮 gaming',
+  '💬 socializing',
+  '📚 grindin\'',
+  '🎧 vibing',
+  '🏃‍♀️ exercising',
+  '🎨 creative flow',
+  '☁️ daydreaming'
 ];
 
 export default function MoodScreen() {
