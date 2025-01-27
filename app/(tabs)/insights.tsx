@@ -18,48 +18,42 @@ const insights = [
     description: "you're crushing it! your vibe has been consistently high this week. whatever you're doing, keep that energy!",
     gradient: ['#C4B5FD', '#8B5CF6'],
     stats: "mood up 23% from last week",
-    size: 'large',
-    height: 200,
+    size: 'large'
   },
   {
     title: "bestie check ",
     description: "noticed you've been in your feels lately. remember: it's okay to not be okay.",
     gradient: ['#93C5FD', '#3B82F6'],
     stats: "3 reflective moments today",
-    size: 'small',
-    height: 160,
+    size: 'small'
   },
   {
     title: "productivity queen ",
     description: "your focus game is strong! you've had 5 deep work sessions this week.",
     gradient: ['#6EE7B7', '#3B82F6'],
     stats: "2 hour flow state achieved",
-    size: 'small',
-    height: 160,
+    size: 'small'
   },
   {
     title: "spill the tea ",
     description: "your journaling streak is giving! keep documenting those thoughts, future you will thank you.",
     gradient: ['#F9A8D4', '#EC4899'],
     stats: "7 day journaling streak",
-    size: 'small',
-    height: 180,
+    size: 'small'
   },
   {
     title: "self care > everything else ",
     description: "friendly reminder to drink water, touch grass, and take those mental health breaks. you're doing amazing!",
     gradient: ['#FDE68A', '#F59E0B'],
     stats: "2 wellness breaks today",
-    size: 'small',
-    height: 180,
+    size: 'small'
   },
   {
     title: "vibe check passed ",
     description: "your energy has been immaculate lately! whatever playlist you're on, it's working bestie.",
     gradient: ['#A7F3D0', '#059669'],
     stats: "positive vibes up 30%",
-    size: 'large',
-    height: 180,
+    size: 'large'
   }
 ];
 
@@ -101,11 +95,14 @@ export default function InsightsScreen() {
     },
     largeCard: {
       width: LARGE_CARD_WIDTH,
+      minHeight: 180,
     },
     smallCard: {
       width: SMALL_CARD_WIDTH,
+      minHeight: 160,
     },
     cardContent: {
+      flex: 1,
       borderRadius: 24,
       padding: 20,
       overflow: 'hidden',
@@ -117,9 +114,11 @@ export default function InsightsScreen() {
     },
     cardBody: {
       flex: 1,
+      minHeight: 120,
       justifyContent: 'space-between',
     },
     cardHeader: {
+      flex: 1,
       marginBottom: 12,
     },
     cardTitle: {
@@ -138,6 +137,7 @@ export default function InsightsScreen() {
       textShadowColor: 'rgba(0,0,0,0.1)',
       textShadowOffset: { width: 0, height: 1 },
       textShadowRadius: 2,
+      flexWrap: 'wrap',
     },
     cardStats: {
       fontSize: 13,
@@ -164,10 +164,10 @@ export default function InsightsScreen() {
         styles.cardWrapper,
         isLarge ? styles.largeCard : styles.smallCard,
       ]}>
-        <Pressable>
+        <Pressable style={{ flex: 1 }}>
           <LinearGradient
             colors={insight.gradient}
-            style={[styles.cardContent, { height: insight.height }]}
+            style={[styles.cardContent]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
           >
@@ -200,12 +200,11 @@ export default function InsightsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content}>
         <View style={styles.header}>
           <Text style={styles.title}>your insights</Text>
-          <Text style={styles.subtitle}>weekly vibe report </Text>
+          <Text style={styles.subtitle}>see how you've been vibing</Text>
         </View>
-        
         <View style={styles.grid}>
           {insights.map((insight, index) => renderCard(insight, index))}
         </View>
